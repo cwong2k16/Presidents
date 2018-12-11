@@ -23,7 +23,8 @@
     "concurrently": "^4.1.0",
     "csvtojson": "^2.0.8",
     "express": "^4.16.4",
-    "heroku": "^7.19.3"
+    "heroku": "^7.19.3",
+    "nodemon": "^1.18.8"
   },
   "devDependencies": {},
   "keywords": []
