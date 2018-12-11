@@ -1,19 +1,20 @@
-// /client/App.js
 import React, { Component } from "react";
+import axios from "axios";
 
 class App extends Component {
-  // initialize our state 
+  /* State object will just contain data of the US presidents */
   state = {
     data: []
   };
 
-  // fetch data from DB
+  /* Initially, web app will display data of president in no particular order */
   componentDidMount() {
     this.getDataFromServer()
     .then(res => this.setState({data: res}))
     .catch(err => console.log(err));
-}
+  };
 
+  /* Fetches presidents' data from server endpoint using fetch API */
   getDataFromServer = async () => {
     const response = await fetch("/api/getData");
     const body = await response.json();
@@ -23,23 +24,53 @@ class App extends Component {
     return body;
   };
 
+  
+  /* POST request using axios
+   * Sends president data from State object to back-end 
+   * Backend sorts by ascending and returns the sorted obj 
+   * Set state object for president to new sorted president obj 
+   */
   getAscending = async () => {
-    const response = await fetch("/api/getAscending");
-    const body = await response.json();
+    const {
+      data
+    } = this.state;
 
-    if(response.status !== 200) throw Error(body.message);
+    axios.post("/api/getAscending", {
+      data 
+    }).then(response => {
+      console.log(response["data"]);
+      this.setState({data:response["data"]});
+    }).catch(error => {
+      console.log(error);
+    });
+  };
 
-    this.setState({data:body});
+  /* Backend sorts by descending and returns the sorted obj 
+   * Set state object for president to new sorted president obj 
+   */
+  getDescending = async () => {
+    const {
+      data
+    } = this.state;
+
+    axios.post("/api/getDescending", {
+      data 
+    }).then(response => {
+      console.log(response["data"]);
+      this.setState({data:response["data"]});
+    }).catch(error => {
+      console.log(error);
+    });
   };
 
   render() {
     const { data } = this.state;
     return (
       <div>
-        <button type = "radio" name="sort" onClick={() => this.getAscending()}>
+        <button onClick={() => this.getAscending()}>
             Get Ascending
         </button>
-        <button type="radio" name="sort" onClick={() => this.getAscending()}>
+        <button onClick={() => this.getDescending()}>
             Get Descending
         </button>
         <ul>
