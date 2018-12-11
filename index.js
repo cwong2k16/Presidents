@@ -6,7 +6,7 @@ const router = express.Router();
 const csvFilePath = ('./presidents.csv');
 const csv=require('csvtojson');
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 /* Parse request objects into readable JSON format */
 app.use(bodyParser.urlencoded({ extended: false }));
