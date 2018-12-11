@@ -5,6 +5,7 @@ const router = express.Router();
 
 const csvFilePath = ('./presidents.csv');
 const csv=require('csvtojson');
+const path=require('path');
 
 const port = process.env.PORT || 48700;
 
@@ -44,7 +45,7 @@ router.get("/getData", (req, res) => {
 });
 
 app.get('*', (req, res)=>{
-  res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
+  // res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
 });
 
 /* "/api" will be the root of the routes in this app */
