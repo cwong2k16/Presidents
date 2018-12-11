@@ -43,6 +43,10 @@ router.get("/getData", (req, res) => {
     res.send(jsonObj);
 });
 
+app.get('*', (req, res)=>{
+  res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
+});
+
 /* "/api" will be the root of the routes in this app */
 app.use("/api", router);
 
