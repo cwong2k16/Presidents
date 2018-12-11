@@ -9,18 +9,12 @@ class App extends Component {
 
   // fetch data from DB
   componentDidMount() {
-    this.getDataFromDb()
+    this.getDataFromServer()
     .then(res => this.setState({data: res}))
     .catch(err => console.log(err));
 }
 
-  // kill process once app terminates
-  componentWillUnmount() {
-
-  }
-
-
-  getDataFromDb = async () => {
+  getDataFromServer = async () => {
     const response = await fetch("/api/getData");
     const body = await response.json();
 
@@ -29,18 +23,32 @@ class App extends Component {
     return body;
   };
 
+  getAscending = async () => {
+    const response = await fetch("/api/getAscending");
+    const body = await response.json();
+
+    if(response.status !== 200) throw Error(body.message);
+
+    this.setState({data:body});
+  };
+
   render() {
     const { data } = this.state;
     return (
       <div>
+        <button type = "radio" name="sort" onClick={() => this.getAscending()}>
+            Get Ascending
+        </button>
+        <button type="radio" name="sort" onClick={() => this.getAscending()}>
+            Get Descending
+        </button>
         <ul>
-          {data.length <= 0
-            ? "NO DB ENTRIES YET"
-            : data.map(dat => (
+          {data.map(dat => (
                 <li style={{ padding: "10px" }} key={data.name}>
-                  <span style={{ color: "gray" }}> Name: </span> {dat.name} <br />
-                  <span style={{ color: "gray" }}> Year: </span> {dat.year} <br />
-                  <span style={{ color: "gray" }}> Number: </span> {dat.number} <br />
+                  <span style={{ color: "gray" }}> Name: </span> {dat["President"]} <br />
+                  <span style={{ color: "gray" }}> Year: </span> {dat["Birthday"]} <br />
+                  <span style={{ color: "gray" }}> Death day: </span> {dat["Death day"]} <br />
+                  <span style={{ color: "gray" }}> Death place: </span> {dat["Death place"]} <br />
                 </li>
               ))}
         </ul>
