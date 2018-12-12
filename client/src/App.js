@@ -76,7 +76,7 @@ class App extends Component {
               Get Descending
           </Button>
         </div>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+        <div style={{justifyContent:'center', alignItems:'center'}}>
           <Table>
             <thead>
               <tr>
