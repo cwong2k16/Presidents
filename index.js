@@ -7,11 +7,12 @@ const csvFilePath = ('./presidents.csv');
 const csv=require('csvtojson');
 const path=require('path');
 
-const port = process.env.PORT || 48700;
+const port = process.env.PORT || 5000;
 
 /* Parse request objects into readable JSON format */
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '/client/build')));
 
 /* Parse out the president CSV file into JSON format, which sends to the front-end */
 router.get("/getData", (req, res) => {
@@ -45,7 +46,7 @@ router.get("/getData", (req, res) => {
 });
 
 app.get('*', (req, res)=>{
-  // res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
+   res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
 });
 
 /* "/api" will be the root of the routes in this app */
