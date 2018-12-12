@@ -67,7 +67,7 @@ class App extends Component {
   render() {
     const { data } = this.state;
     return (
-      <div style={{position:center}}>
+      <div style={{textAlign:"center"}}>
         <Button onClick={() => this.getAscending()}>
             Get Ascending
         </Button>
