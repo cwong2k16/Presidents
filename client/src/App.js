@@ -67,16 +67,13 @@ class App extends Component {
   render() {
     const { data } = this.state;
     return (
-      <div>
-        <div style={{textAlign:"center"}}>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
           <Button onClick={() => this.getAscending()}>
               Get Ascending
           </Button>
           <Button onClick={() => this.getDescending()}>
               Get Descending
           </Button>
-        </div>
-        <div>
           <Table>
             <thead>
               <tr>
@@ -109,7 +106,6 @@ class App extends Component {
                   ))}
               </tbody>
             </Table>
-            </div>
           </div>
     );
   }
