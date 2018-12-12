@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Table, Button} from "react-bootstrap";
 
 class App extends Component {
   /* State object will just contain data of the US presidents */
@@ -67,22 +68,44 @@ class App extends Component {
     const { data } = this.state;
     return (
       <div>
-        <button onClick={() => this.getAscending()}>
+        <Button onClick={() => this.getAscending()}>
             Get Ascending
-        </button>
-        <button onClick={() => this.getDescending()}>
+        </Button>
+        <Button onClick={() => this.getDescending()}>
             Get Descending
-        </button>
-        <ul>
-          {data.map(dat => (
-                <li style={{ padding: "10px" }} key={data.name}>
-                  <span style={{ color: "gray" }}> Name: </span> {dat["President"]} <br />
-                  <span style={{ color: "gray" }}> Year: </span> {dat["Birthday"]} <br />
-                  <span style={{ color: "gray" }}> Death day: </span> {dat["Death day"]} <br />
-                  <span style={{ color: "gray" }}> Death place: </span> {dat["Death place"]} <br />
-                </li>
-              ))}
-        </ul>
+        </Button>
+        <Table>
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Birthday
+              </th>
+              <th>
+                Birth place 
+              </th>
+              <th>
+                Death day
+              </th>
+              <th>
+                Death place
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map(dat => (
+                  <tr style={{ padding: "10px" }} key={data.name}>
+                    <td style={{ color: "gray" }}> Name: {dat["President"]} </td> 
+                    <td style={{ color: "gray" }}> Year: {dat["Birthday"]} </td> 
+                    <td style={{ color: "gray" }}> Year: {dat["Birthplace"]} </td> 
+                    <td style={{ color: "gray" }}> Death day: {dat["Death day"]} </td>
+                    <td style={{ color: "gray" }}> Death place: {dat["Death place"]} </td>
+                  </tr>
+                ))}
+            </tbody>
+          </Table>
         </div>
     );
   }
