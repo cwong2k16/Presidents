@@ -67,7 +67,7 @@ class App extends Component {
   render() {
     const { data } = this.state;
     return (
-      <div>
+      <div style={{position:center}}>
         <Button onClick={() => this.getAscending()}>
             Get Ascending
         </Button>
@@ -97,11 +97,11 @@ class App extends Component {
           <tbody>
             {data.map(dat => (
                   <tr style={{ padding: "10px" }} key={data.name}>
-                    <td style={{ color: "gray" }}> Name: {dat["President"]} </td> 
-                    <td style={{ color: "gray" }}> Year: {dat["Birthday"]} </td> 
-                    <td style={{ color: "gray" }}> Year: {dat["Birthplace"]} </td> 
-                    <td style={{ color: "gray" }}> Death day: {dat["Death day"]} </td>
-                    <td style={{ color: "gray" }}> Death place: {dat["Death place"]} </td>
+                    <td> {dat["President"]} </td> 
+                    <td> {dat["Birthday"]} </td> 
+                    <td> {dat["Birthplace"]} </td> 
+                    <td> {dat["Death day"]} </td>
+                    <td> {dat["Death place"]} </td>
                   </tr>
                 ))}
             </tbody>
