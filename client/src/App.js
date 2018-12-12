@@ -67,46 +67,50 @@ class App extends Component {
   render() {
     const { data } = this.state;
     return (
-      <div style={{textAlign:"center"}}>
-        <Button onClick={() => this.getAscending()}>
-            Get Ascending
-        </Button>
-        <Button onClick={() => this.getDescending()}>
-            Get Descending
-        </Button>
-        <Table>
-          <thead>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Birthday
-              </th>
-              <th>
-                Birth place 
-              </th>
-              <th>
-                Death day
-              </th>
-              <th>
-                Death place
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map(dat => (
-                  <tr style={{ padding: "10px" }} key={data.name}>
-                    <td> {dat["President"]} </td> 
-                    <td> {dat["Birthday"]} </td> 
-                    <td> {dat["Birthplace"]} </td> 
-                    <td> {dat["Death day"]} </td>
-                    <td> {dat["Death place"]} </td>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
+      <div>
+        <div style={{textAlign:"center"}}>
+          <Button onClick={() => this.getAscending()}>
+              Get Ascending
+          </Button>
+          <Button onClick={() => this.getDescending()}>
+              Get Descending
+          </Button>
         </div>
+        <div>
+          <Table>
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Birthday
+                </th>
+                <th>
+                  Birth place 
+                </th>
+                <th>
+                  Death day
+                </th>
+                <th>
+                  Death place
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map(dat => (
+                    <tr style={{ padding: "10px" }} key={data.name}>
+                      <td> {dat["President"]} </td> 
+                      <td> {dat["Birthday"]} </td> 
+                      <td> {dat["Birthplace"]} </td> 
+                      <td> {dat["Death day"]} </td>
+                      <td> {dat["Death place"]} </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+            </div>
+          </div>
     );
   }
 }
